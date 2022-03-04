@@ -1,7 +1,7 @@
 :root {
-    --bx_shad: 5px 5px 10px rgba(0, 0, 0, 0.6);
-    --dark_col: rgb(24, 26, 122);
-    --light_col: rgb(167, 168, 216);
+    --bx_shad: 3px 3px 8px rgba(0, 0, 0, 0.6);
+    --dark_col: rgb(116, 184, 136);
+    --light_col: rgb(202, 226, 210);
 }
 * {
     margin: 0;
@@ -10,12 +10,12 @@
     white-space: nowrap;
 }
 body {
-    color: white;
+    color: black;
     font-family: Ubuntu;
 }
 
 .header_img {
-    width: 300px;
+    width: 150px;
     box-shadow: var(--bx_shad);
     border-radius: 10px;
     margin: 20px;
@@ -39,7 +39,7 @@ header {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-    background: linear-gradient(var(--dark_col), var(--light_col));
+    background: var(--light_col);
     min-width: 450px;
 }
 .navigation {
@@ -53,20 +53,22 @@ header {
     display: flex;
 }
 .navi li {
-    padding: 2vw;
+    padding: 20px;
     list-style-type: none;
 }
 .navi a {
     display: inline-block;
-    padding: 1vw;
+    padding: 10px;
     text-decoration: none;
     font-size: 40px;
-    color: white;
+    color: black;
     text-shadow: var(--bx_shad);
     transition: 1s;
+    border: 1px solid rgba(0, 0, 0, 0);
 }
 .navi li a:hover {
     background-color: var(--dark_col);
+    border: 1px solid black;
     border-radius: 10px;
 }
 
@@ -91,8 +93,9 @@ header {
 }
 
 .intro_img {
-    width: 400px;
+    width: 550px;
     margin-right: 60px;
+    border: 1px solid black;
     border-radius: 50%;
 }
 
@@ -121,7 +124,7 @@ header {
 }
 .project__item a {
     text-decoration: none;
-    color: white;
+    color: black;
 }
 .project__item:hover .project_img {
     cursor: pointer;
@@ -135,10 +138,31 @@ header {
     opacity: 100%;
     transition: box-shadow 2s ease-in-out, opacity 1s linear;
 }
-
+.project::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--dark_col);
+}
+.project::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: var(--light_col);
+}
 .skills {
     display: flex;
+    position: relative;
     flex-direction: column;
+    align-items: center;
     padding-left: 7vw;
     min-width: 50vw;
     background: var(--dark_col);
@@ -148,11 +172,13 @@ header {
 }
 .skill__container {
     position: relative;
-    height: 40px;
+    height: 20px;
     width: 70%;
-    border: 5px solid white;
+    border: 3px solid black;
     border-radius: 15px;
+    margin-bottom: 2vw;
 }
+
 .skills:last-child {
     padding-bottom: 20px;
 }
@@ -165,26 +191,82 @@ header {
 
     background: linear-gradient(to right, var(--dark_col), var(--light_col));
 
-    height: 30px;
+    height: 13px;
     border-radius: 10px;
+    box-shadow: 0 0 20px
+        linear-gradient(to right, var(--dark_col), var(--light_col));
+}
+.skill_all::before {
+    position: absolute;
+    content: '';
+    top: -45px;
+    left: -100px;
+    height: 120px;
+    width: 80px;
 }
 .skill_html {
+    position: relative;
     width: 60%;
 }
+.skill_html::before {
+    background-image: url(/img/html5-brands.svg);
+    background-repeat: no-repeat;
+}
+
 .skill_css {
     width: 60%;
+}
+.skill_css::before {
+    background-image: url(/img/css3-alt-brands.svg);
+    background-repeat: no-repeat;
 }
 .skill_js {
     width: 10%;
 }
+.skill_js::before {
+    background-image: url(/img/js-square-brands.svg);
+    background-repeat: no-repeat;
+}
 .skill_react {
     width: 10%;
+}
+.skill_react::before {
+    background-image: url(/img/react-brands.svg);
+    background-repeat: no-repeat;
 }
 .skill_python {
     width: 40%;
 }
+.skill_python::before {
+    background-image: url(/img/python-brands.svg);
+    background-repeat: no-repeat;
+}
 .skill_sql {
     width: 20%;
+}
+.skill_sql::before {
+    background-image: url(/img/sql-svgrepo-com.svg);
+    background-repeat: no-repeat;
+}
+.skills::before {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: -20px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--light_col);
+}
+.skills::after {
+    content: '';
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: var(--dark_col);
 }
 .cuvi {
     background: linear-gradient(var(--light_col), var(--dark_col));
@@ -202,6 +284,9 @@ header {
 }
 .cv_details {
     padding: 2vw 6vw;
+}
+.cv_details h2 {
+    color: black;
 }
 .cv li {
     padding: 2vh 2vw;
@@ -226,8 +311,8 @@ footer li {
 }
 footer a {
     display: block;
-    padding: 2vw 3vw 1vw 0;
-    color: white;
+    padding: 1vw 2vw 1vw 0;
+    color: black;
 }
 .contact {
     z-index: 1;
@@ -266,7 +351,6 @@ footer a {
 .close {
     font-size: 48px;
     text-decoration: none;
-    color: white;
     position: absolute;
     top: 0px;
     right: 10px;
@@ -277,10 +361,10 @@ footer a {
         margin: 20px 0;
     }
     .header_img {
-        width: 150px;
+        width: 100px;
     }
     .intro_img {
-        width: 200px;
+        width: 400px;
         margin: 20px 0;
     }
     .intro_text {
@@ -293,17 +377,16 @@ footer a {
         font-size: 24px;
     }
     .main_container {
-        flex-direction: column;
+        flex-direction: column-reverse;
         align-items: center;
     }
-    .project {
+    .project,
+    .skills,
+    .cuvi {
         width: 100%;
     }
     .project__item {
         padding-bottom: 20px;
-    }
-    .skills {
-        width: 100%;
     }
 }
 @media (max-width: 900px) {
@@ -331,6 +414,7 @@ footer a {
         align-items: center;
     }
     .header_img {
-        margin-top: 60px;
+        width: 50px;
+        align-self: flex-start;
     }
 }
