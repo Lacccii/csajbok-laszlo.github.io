@@ -1,7 +1,10 @@
 :root {
     --bx_shad: 3px 3px 8px rgba(0, 0, 0, 0.6);
-    --dark_col: rgb(116, 184, 136);
-    --light_col: rgb(202, 226, 210);
+    --light_shad: 3px 3px 8px rgba(228, 130, 50, 0.6);
+    --dark_col: rgb(228, 130, 50);
+    --light_col: black;
+    --dark_txt: rgb(228, 130, 50);
+    --light_txt: black;
 }
 * {
     margin: 0;
@@ -10,29 +13,30 @@
     white-space: nowrap;
 }
 body {
-    background-color: black;
-    color: black;
+    background-color: white;
+    color: var(--light_txt);
     font-family: Ubuntu;
+    min-width: 375px;
 }
 
 .header_img {
-    width: 150px;
+    width: 100px;
     box-shadow: var(--bx_shad);
     border-radius: 10px;
     margin: 20px;
 }
 h1 {
     align-self: center;
-    font-size: 80px;
+    font-size: 60px;
     text-shadow: var(--bx_shad);
 }
 h2 {
-    font-size: 40px;
+    font-size: 30px;
     text-shadow: var(--bx_shad);
     padding: 3vh 0;
 }
 h3 {
-    font-size: 30px;
+    font-size: 24px;
     text-shadow: var(--bx_shad);
     padding: 1vh 0;
 }
@@ -43,41 +47,28 @@ header {
     justify-content: space-between;
     background: var(--light_col);
 }
-.navigation {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.navbar-dark .navbar-nav .nav-link {
+    display: inline;
+    transition: 120ms;
+    border: none;
+    border-radius: 20px;
+    font-size: 30px;
+    padding: 0 20px;
+    color: white;
+    transition: 0.5s;
 }
-.navi {
-    align-self: center;
-    display: flex;
-}
-.navi li {
-    padding: 20px;
-    list-style-type: none;
-}
-.navi a {
-    display: inline-block;
-    padding: 10px;
-    text-decoration: none;
-    font-size: 40px;
-    color: black;
-    text-shadow: var(--bx_shad);
-    transition: 1s;
-    border: 1px solid rgba(0, 0, 0, 0);
-}
-.navi li a:hover {
+.navbar-dark .navbar-nav .nav-link:hover:hover {
+    border-radius: 20px;
     background-color: var(--dark_col);
-    border: 1px solid black;
-    border-radius: 10px;
+    color: var(--light_txt);
 }
 
 .intro {
     width: 100%;
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    color: white;
     background: linear-gradient(var(--light_col), var(--dark_col));
 }
 .intro_text {
@@ -94,22 +85,30 @@ header {
 }
 
 .intro_img {
-    width: 550px;
-    margin-right: 60px;
-    border: 1px solid black;
+    display: block;
+    width: 300px;
+    border: 3px solid var(--dark_txt);
+    outline: 1px solid black;
     border-radius: 50%;
+    margin-bottom: 40px;
 }
 
 .main_container {
     display: flex;
-    flex-wrap: nowrap;
+    flex-direction: column;
 }
 .project {
     position: relative;
-    width: 50%;
+    width: 100%;
     text-align: center;
     background: var(--light_col);
+    color: var(--dark_txt);
     z-index: 2;
+}
+.project h3,
+.project h2 {
+    color: var(--dark_txt);
+    text-shadow: var(--light_shad);
 }
 
 .project__container {
@@ -124,28 +123,26 @@ header {
 }
 .project__item a {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 .project__item:hover .project_img {
     cursor: pointer;
-    opacity: 60%;
-    box-shadow: 5px 5px 5px var(--dark_col) inset;
+    border: 5px solid var(--dark_txt);
 }
 .project_img {
     max-width: 300px;
     box-shadow: var(--bx_shad);
+    border: none;
     border-radius: 10px;
-    opacity: 100%;
-    transition: box-shadow 2s ease-in-out, opacity 1s linear;
+    transition: 160ms;
 }
 .project::before {
     content: '';
     position: absolute;
-    top: -20px;
+    top: -5px;
     right: -20px;
     width: 100px;
-    height: 100px;
-    border-radius: 50%;
+    height: 70px;
     background-color: var(--dark_col);
     z-index: -1;
 }
@@ -162,42 +159,34 @@ header {
 }
 .skills {
     display: flex;
-    width: 50%;
+    width: 100%;
     position: relative;
     flex-direction: column;
     align-items: center;
     padding-left: 10vw;
     background: var(--dark_col);
     z-index: 2;
-}
-.fa-html {
-    font-size: 120px;
+    padding-top: 20px;
 }
 .skill__container {
     position: relative;
-    height: 20px;
+    height: 31px;
     width: 70%;
     border: 3px solid black;
     border-radius: 15px;
     margin-bottom: 6vw;
+    background: black;
 }
 
 .skills:last-child {
     padding-bottom: 20px;
 }
-.skill__container p {
-    padding-top: 0.6vw;
-    padding-left: 1vw;
-}
 .skill_all {
     position: absolute;
+    background: linear-gradient(to right, var(--light_col), var(--dark_col));
 
-    background: linear-gradient(to right, var(--dark_col), var(--light_col));
-
-    height: 13px;
+    height: 25px;
     border-radius: 10px;
-    box-shadow: 0 0 20px
-        linear-gradient(to right, var(--dark_col), var(--light_col));
 }
 .skill_all::before {
     position: absolute;
@@ -276,6 +265,8 @@ header {
 .cuvi {
     width: 100%;
     background: linear-gradient(var(--light_col), var(--dark_col));
+    color: white;
+    padding-top: 20px;
 }
 .cuvi h2 {
     text-align: center;
@@ -284,6 +275,7 @@ header {
 }
 .cv {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     padding-bottom: 2vh;
 }
@@ -291,7 +283,6 @@ header {
     padding: 2vw 6vw;
 }
 .cv_details h2 {
-    color: black;
 }
 .cv li {
     padding: 2vh 2vw;
@@ -300,7 +291,7 @@ header {
 
 footer {
     background: var(--dark_col);
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
     border-top: 1px solid black;
     padding: 10px;
@@ -316,7 +307,7 @@ footer li {
 footer a {
     display: block;
     padding: 1vw 2vw 1vw 0;
-    color: black;
+    color: white;
 }
 .contact {
     z-index: 100;
@@ -326,7 +317,8 @@ footer a {
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--dark_txt);
     transition: opacity 500ms;
     visibility: hidden;
     opacity: 0;
@@ -359,64 +351,18 @@ footer a {
     top: 0px;
     right: 10px;
 }
-@media (max-width: 1300px) {
-    h1,
-    h2 {
-        margin: 20px 0;
-    }
-    .header_img {
-        width: 80px;
+@media (min-width: 900px) {
+    .intro {
+        flex-direction: row;
+        justify-content: space-around;
     }
     .intro_img {
-        width: 400px;
-        margin: 20px 0;
-    }
-    .intro_text {
-        padding: 0;
-    }
-    .intro_text h2 {
-        padding: 0;
-    }
-    .navi a {
-        font-size: 24px;
+        width: 500px;
     }
     .main_container {
-        flex-direction: column-reverse;
-        align-items: center;
-    }
-    .project,
-    .skills {
-        width: 100%;
-        overflow: hidden;
-    }
-
-    .project__item {
-        padding-bottom: 20px;
-    }
-}
-@media (max-width: 800px) {
-    .intro {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
     }
     .cv {
-        flex-direction: column;
-        align-items: center;
-    }
-    .navi {
-        display: none;
-    }
-
-    .popup {
-        right: 25vh;
-        width: 50%;
-    }
-    header {
-        flex-direction: column;
-        align-items: center;
-    }
-    .header_img {
-        width: 50px;
-        align-self: flex-start;
+        flex-direction: row;
     }
 }
